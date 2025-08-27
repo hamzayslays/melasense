@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => OnboardingVm()),
-        ChangeNotifierProvider(create: (_) => ViewAllTestVM()),
+        ChangeNotifierProvider(create: (_) => TestViewModel()),
       ],
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {

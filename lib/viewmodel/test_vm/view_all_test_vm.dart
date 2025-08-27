@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ViewAllTestVM extends ChangeNotifier {
+class TestViewModel extends ChangeNotifier {
   String _selectedFilter = "7";
   String get selectedFilter => _selectedFilter;
 
@@ -108,8 +108,30 @@ class ViewAllTestVM extends ChangeNotifier {
     return _allTests;
   }
 
+  // test screen
   void changeFilter(String filter) {
     _selectedFilter = filter;
+    notifyListeners();
+  }
+
+  int _currentStep = 0;
+
+  int get currentStep => _currentStep;
+
+  void setStep(int step) {
+    _currentStep = step;
+    notifyListeners();
+  }
+
+  void nextStep() {
+    if (_currentStep < 3) {
+      _currentStep++;
+      notifyListeners();
+    }
+  }
+
+  void resetSteps() {
+    _currentStep = 0;
     notifyListeners();
   }
 }

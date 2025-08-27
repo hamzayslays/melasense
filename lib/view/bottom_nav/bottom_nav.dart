@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:melasense/res/colors.dart';
 import 'package:melasense/view/home/patient_dashboard.dart';
+import 'package:melasense/view/test/test_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BottomNav extends StatefulWidget {
@@ -16,7 +17,7 @@ class _BottomNavState extends State<BottomNav> {
   // Yahan apni 4 screens banao
   final List<Widget> _pages = [
     PatientDashboard(),
-    TestScreen(),
+    NewTestScreen(),
     LearnScreen(),
     SettingsScreen(),
   ];
@@ -107,14 +108,6 @@ class _BottomNavState extends State<BottomNav> {
         ],
       ),
     );
-  }
-}
-
-//dumy
-class TestScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("🧪 Test Screen"));
   }
 }
 

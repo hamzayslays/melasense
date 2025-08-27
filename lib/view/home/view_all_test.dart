@@ -13,7 +13,7 @@ class ViewAllTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<ViewAllTestVM>(context);
+    final vm = Provider.of<TestViewModel>(context);
 
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
@@ -106,7 +106,7 @@ class ViewAllTest extends StatelessWidget {
     );
   }
 
-  Widget _filterChip(String key, String label, ViewAllTestVM vm) {
+  Widget _filterChip(String key, String label, TestViewModel vm) {
     bool isSelected = vm.selectedFilter == key;
     return InkWell(
       onTap: () => vm.changeFilter(key),

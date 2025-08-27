@@ -81,10 +81,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     children: [
                       if (!isMe) ...[
                         CircleAvatar(
-                          radius: 18.sp,
+                          radius: 23.sp,
                           backgroundImage: NetworkImage(msg["avatar"]),
                         ),
-                        SizedBox(width: 1.w),
+                        SizedBox(width: 2.w),
                       ],
                       Container(
                         padding: EdgeInsets.symmetric(
@@ -137,9 +137,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       ),
                       if (isMe) ...[
-                        SizedBox(width: 1.w),
+                        SizedBox(width: 2.w),
                         CircleAvatar(
-                          radius: 18.sp,
+                          radius: 23.sp,
                           backgroundImage: NetworkImage(msg["avatar"]),
                         ),
                       ],
