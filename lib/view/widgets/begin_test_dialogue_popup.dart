@@ -3,14 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:melasense/res/colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class TestPrepDialog extends StatelessWidget {
-  final VoidCallback onContinue;
+class BeginTestPopup extends StatelessWidget {
+  final VoidCallback onBegin;
   final VoidCallback onCancel;
+  final VoidCallback onHelp;
 
-  const TestPrepDialog({
+  const BeginTestPopup({
     super.key,
-    required this.onContinue,
+    required this.onBegin,
     required this.onCancel,
+    required this.onHelp,
   });
 
   @override
@@ -24,7 +26,7 @@ class TestPrepDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Test Prep In Progress",
+              "Begin Test?",
               style: GoogleFonts.inter(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
@@ -45,25 +47,6 @@ class TestPrepDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: ElevatedButton(
-                    onPressed: onContinue,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColor.primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.sp),
-                      ),
-                    ),
-                    child: Text(
-                      "Continue",
-                      style: GoogleFonts.inter(
-                        color: AppColor.whiteColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 2.w),
-                Expanded(
                   child: OutlinedButton(
                     onPressed: onCancel,
                     style: OutlinedButton.styleFrom(
@@ -81,7 +64,43 @@ class TestPrepDialog extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(width: 4.w),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: onBegin,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColor.primaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.sp),
+                      ),
+                    ),
+                    child: Text(
+                      "Begin",
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
               ],
+            ),
+            SizedBox(height: 2.h),
+            OutlinedButton(
+              onPressed: onHelp,
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: Colors.grey.shade400),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text(
+                "Help",
+                style: GoogleFonts.inter(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ],
         ),

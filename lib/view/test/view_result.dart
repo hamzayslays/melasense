@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:melasense/res/colors.dart';
 import 'package:melasense/res/components/square_button.dart';
+import 'package:melasense/util/routes/routes_name.dart';
 import 'package:melasense/view/widgets/result_downloaded_succefully_popup.dart';
 import 'package:melasense/view/widgets/risk_chart_graph_widget.dart';
 import 'package:melasense/view/widgets/share_with_doctor_popup.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class TestResultScreen extends StatelessWidget {
-  const TestResultScreen({super.key});
+class TestResult extends StatelessWidget {
+  const TestResult({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,15 +91,7 @@ class TestResultScreen extends StatelessWidget {
                       fontSize: 17.sp,
                     ),
                   ),
-                  SizedBox(height: 0.5.h),
-                  Text(
-                    "No significant melanoma markers detected",
-                    style: GoogleFonts.inter(
-                      color: AppColor.blackColor,
-                      fontSize: 15.sp,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+
                   SizedBox(height: 2.h),
                   Divider(),
                   Row(
@@ -126,6 +119,8 @@ class TestResultScreen extends StatelessWidget {
             ),
 
             SizedBox(height: 3.h),
+            Image.asset('assets/graph.png'),
+            SizedBox(height: 3.h),
 
             Center(
               child: Container(
@@ -152,12 +147,28 @@ class TestResultScreen extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColor.lightgreen,
+                            child: SizedBox(
+                              height: 2.5.h,
+                              width: 23.w,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(
+                                    124,
+                                    175,
+                                    251,
+                                    191,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: Text(
+                                  "Stable",
+                                  style: GoogleFonts.inter(
+                                    color: AppColor.green,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
                               ),
-                              onPressed: () {},
-                              child: Text("Stable"),
                             ),
                           ),
                         ],
@@ -308,42 +319,66 @@ class TestResultScreen extends StatelessWidget {
 
             SizedBox(height: 4.h),
 
-            SquareButton(
-              title: 'Download Pdf',
-              icon: Icons.file_download_outlined,
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => const ResultDownloadedPopup(),
-                );
-
-                Future.delayed(const Duration(seconds: 2), () {
-                  Navigator.of(context).pop();
-                });
-              },
-              fontWeight: FontWeight.w500,
+            Row(
+              children: [
+                Expanded(
+                  child: SquareButton(
+                    title: 'Download Pdf',
+                    fontSize: 16.sp,
+                    icon: Icons.file_download_outlined,
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => const ResultDownloadedPopup(),
+                      );
+                      Future.delayed(const Duration(seconds: 3), () {
+                        if (Navigator.of(context).canPop()) {
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    },
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(width: 2.w),
+                Expanded(
+                  child: SquareButton(
+                    title: 'Share Report',
+                    fontSize: 16.sp,
+                    icon: Icons.share,
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => const ShareWithDoctorPopup(),
+                      );
+                      Future.delayed(const Duration(seconds: 10), () {
+                        if (Navigator.of(context).canPop()) {
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    },
+                    backgroundColor: AppColor.whiteColor,
+                    borderColor: AppColor.primaryColor,
+                    textColor: AppColor.primaryColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
             ),
-
-            SizedBox(height: 1.h),
+            SizedBox(height: 2.h),
             SquareButton(
-              title: 'Share Report',
-              icon: Icons.share,
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => const ShareWithDoctorPopup(),
-                );
-
-                Future.delayed(const Duration(seconds: 2), () {
-                  Navigator.of(context).pop();
-                });
-              },
+              title: 'Schedule Appointment',
+              fontSize: 17.sp,
+              icon: Icons.calendar_month,
               backgroundColor: AppColor.whiteColor,
-              borderColor: AppColor.primaryColor,
-              textColor: AppColor.primaryColor,
+              borderColor: AppColor.gray,
+              textColor: AppColor.gray,
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.scheduleAppointment);
+              },
               fontWeight: FontWeight.w500,
             ),
-            SizedBox(height: 5.h),
+            SizedBox(height: 8.h),
           ],
         ),
       ),

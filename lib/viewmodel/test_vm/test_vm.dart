@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class TestViewModel extends ChangeNotifier {
@@ -133,5 +135,48 @@ class TestViewModel extends ChangeNotifier {
   void resetSteps() {
     _currentStep = 0;
     notifyListeners();
+  }
+
+  // To Change the Ui of the test screen after user clicks on begin test
+
+  bool _beginTest = false;
+
+  bool get beginTest => _beginTest;
+
+  void setBeginTest(bool beginTestt) {
+    _beginTest = beginTestt;
+    notifyListeners();
+  }
+
+  // circular process
+
+  static const int totalTime = 60;
+  int _remainingTime = totalTime;
+  Timer? _timer;
+
+  int get remainingTime => _remainingTime;
+  double get progress => (totalTime - _remainingTime) / totalTime;
+
+  void startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_remainingTime > 0) {
+        _remainingTime--;
+        notifyListeners();
+      } else {
+        stopTimer();
+      }
+    });
+  }
+
+  void stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    stopTimer();
+    super.dispose();
   }
 }

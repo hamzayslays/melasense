@@ -15,7 +15,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
   List<String> items = ['Patient', 'Doctor', 'Health Care Provider'];
 
   @override
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               SizedBox(height: 6.h),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 8.h,
                   child: Image.asset('assets/logo.png'),
                 ),
@@ -72,7 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              CustomTextField(controller: controller, label: 'Email Address'),
+              CustomTextField(
+                controller: emailcontroller,
+                label: 'Email Address',
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 1.h),
                 child: Text(
@@ -83,7 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              CustomTextField(controller: controller, label: 'Password'),
+              CustomTextField(
+                controller: passwordcontroller,
+                label: 'Password',
+              ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: GestureDetector(

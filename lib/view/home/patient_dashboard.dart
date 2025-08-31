@@ -1,10 +1,10 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:melasense/res/colors.dart';
 import 'package:melasense/res/components/square_button.dart';
 import 'package:melasense/util/routes/routes_name.dart';
+import 'package:melasense/view/bottom_nav/bottom_nav.dart';
 import 'package:melasense/view/widgets/risk_chart_graph_widget.dart';
 import 'package:melasense/view/widgets/test_result_card_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -145,7 +145,14 @@ class _PatientDashboardState extends State<PatientDashboard> {
                   SizedBox(height: 2.h),
                   SquareButton(
                     title: 'Start New Test',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const BottomNav(initialIndex: 1),
+                        ),
+                      );
+                    },
                     backgroundColor: AppColor.whiteColor,
                     textColor: AppColor.primaryColor,
                   ),
@@ -358,7 +365,14 @@ class _PatientDashboardState extends State<PatientDashboard> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const BottomNav(initialIndex: 2),
+                      ),
+                    );
+                  },
                   child: Text(
                     "View All",
                     style: GoogleFonts.inter(

@@ -33,7 +33,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
-      value: selectedValue,
+      initialValue: selectedValue,
       onChanged: (value) {
         setState(() {
           selectedValue = value;

@@ -3,12 +3,18 @@ import 'package:melasense/util/routes/routes_name.dart';
 import 'package:melasense/view/auth/login_screen.dart';
 import 'package:melasense/view/auth/signup_screen.dart';
 import 'package:melasense/view/bottom_nav/bottom_nav.dart';
+import 'package:melasense/view/chatbot/chatbot.dart';
 import 'package:melasense/view/home/test_result_screen.dart';
 import 'package:melasense/view/home/view_all_test.dart';
+import 'package:melasense/view/learn/article_screen.dart';
 import 'package:melasense/view/messages/messages_screen.dart';
 import 'package:melasense/view/notification/notification_screen.dart';
 import 'package:melasense/view/onboarding/onboarding_screen.dart';
+import 'package:melasense/view/settings/edit_profile.dart';
+import 'package:melasense/view/settings/help_support_screen.dart';
 import 'package:melasense/view/splash/splash_screen.dart';
+import 'package:melasense/view/test/appointment/book_appointment.dart';
+import 'package:melasense/view/test/appointment/schedule_appointment.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -31,7 +37,18 @@ class Routes {
         return MaterialPageRoute(builder: (ctx) => MessagesScreen());
       case RouteNames.notificationScreen:
         return MaterialPageRoute(builder: (ctx) => NotificationScreen());
-
+      case RouteNames.scheduleAppointment:
+        return MaterialPageRoute(builder: (ctx) => ScheduleAppointment());
+      case RouteNames.bookAppointment:
+        return MaterialPageRoute(builder: (ctx) => BookAppointment());
+      case RouteNames.articleScreen:
+        return MaterialPageRoute(builder: (ctx) => ArticleScreen());
+      case RouteNames.editProfile:
+        return MaterialPageRoute(builder: (ctx) => EditProfile());
+      case RouteNames.helpSupport:
+        return MaterialPageRoute(builder: (ctx) => HelpSupportScreen());
+      case RouteNames.chatBot:
+        return MaterialPageRoute(builder: (ctx) => ChatBotScreen());
       default:
         return MaterialPageRoute(
           builder: (_) {

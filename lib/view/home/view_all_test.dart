@@ -4,7 +4,7 @@ import 'package:melasense/res/colors.dart';
 import 'package:melasense/util/routes/routes_name.dart';
 import 'package:melasense/view/widgets/custom_date_range_popup_widget.dart';
 import 'package:melasense/view/widgets/test_result_card_widget.dart';
-import 'package:melasense/viewmodel/test_vm/view_all_test_vm.dart';
+import 'package:melasense/viewmodel/test_vm/test_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -51,7 +51,7 @@ class ViewAllTest extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (_) {
-                          return CustomDateRangeDialog(
+                          return CustomDateRangePopup(
                             initialStart: null,
                             initialEnd: null,
                             onApply: (start, end) {

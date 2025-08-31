@@ -14,7 +14,10 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+
+  TextEditingController emailcontroller = TextEditingController();
   List<String> items = ['Patient', 'Doctor', 'Health Care Provider'];
   List<String> associateProvider = ['MM Hospital', 'CCH', 'Life Care Hospital'];
   List<String> associateDoctor = ['Dr Chen Doe', 'Dr Patrick', 'Dr Anna'];
@@ -31,7 +34,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               SizedBox(height: 6.h),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 8.h,
                   child: Image.asset('assets/logo.png'),
                 ),
@@ -73,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
 
-              CustomTextField(controller: controller, label: 'Name'),
+              CustomTextField(controller: namecontroller, label: 'Name'),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 1.h),
                 child: Text(
@@ -114,7 +117,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
-              CustomTextField(controller: controller, label: 'Email Address'),
+              CustomTextField(
+                controller: emailcontroller,
+                label: 'Email Address',
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 1.h),
                 child: Text(
@@ -125,7 +131,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
-              CustomTextField(controller: controller, label: 'Password'),
+              CustomTextField(
+                controller: passwordcontroller,
+                label: 'Password',
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 1.h),
                 child: Text(

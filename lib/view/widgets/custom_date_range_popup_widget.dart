@@ -4,13 +4,13 @@ import 'package:melasense/res/colors.dart';
 import 'package:melasense/res/components/square_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class CustomDateRangeDialog extends StatefulWidget {
+class CustomDateRangePopup extends StatefulWidget {
   final DateTime? initialStart;
   final DateTime? initialEnd;
 
   final void Function(DateTime? start, DateTime? end) onApply;
 
-  const CustomDateRangeDialog({
+  const CustomDateRangePopup({
     super.key,
     this.initialStart,
     this.initialEnd,
@@ -18,10 +18,10 @@ class CustomDateRangeDialog extends StatefulWidget {
   });
 
   @override
-  State<CustomDateRangeDialog> createState() => _CustomDateRangeDialogState();
+  State<CustomDateRangePopup> createState() => _CustomDateRangePopupState();
 }
 
-class _CustomDateRangeDialogState extends State<CustomDateRangeDialog> {
+class _CustomDateRangePopupState extends State<CustomDateRangePopup> {
   DateTime? startDate;
   DateTime? endDate;
   final dateFormat = DateFormat("dd-MMM-yyyy");

@@ -45,10 +45,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
         elevation: 0,
         scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
-        ),
+
         title: Text(
           "Messages",
           style: GoogleFonts.inter(

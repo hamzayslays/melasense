@@ -13,6 +13,7 @@ class SquareButton extends StatelessWidget {
   final IconData? icon;
   final Color? iconColor;
   final FontWeight? fontWeight;
+  final double? fontSize; // 👈 new property
 
   const SquareButton({
     super.key,
@@ -25,6 +26,7 @@ class SquareButton extends StatelessWidget {
     this.icon,
     this.iconColor,
     this.fontWeight = FontWeight.bold,
+    this.fontSize, // 👈 new property
   });
 
   @override
@@ -64,7 +66,7 @@ class SquareButton extends StatelessWidget {
                       title,
                       style: GoogleFonts.poppins(
                         fontWeight: fontWeight,
-                        fontSize: 18.sp,
+                        fontSize: fontSize ?? 18.sp, // 👈 default fallback
                         color: textColor ?? Colors.white,
                       ),
                     ),

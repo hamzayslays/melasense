@@ -8,4 +8,10 @@ class RouteNames {
   static const String testResultScreen = 'Test_Result_Screen';
   static const String notificationScreen = 'Notification_Screen';
   static const String messageScreen = 'Message_Screen';
+  static const String scheduleAppointment = 'Schedule_Appointment';
+  static const String bookAppointment = 'Book_Appointment';
+  static const String articleScreen = 'Article_Screen';
+  static const String editProfile = 'Edit_Profile';
+  static const String helpSupport = 'help_support_screen';
+  static const String chatBot = 'chatbot_screen';
 }

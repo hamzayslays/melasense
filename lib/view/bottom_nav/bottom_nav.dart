@@ -2,23 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:melasense/res/colors.dart';
+import 'package:melasense/util/routes/routes_name.dart';
 import 'package:melasense/view/home/patient_dashboard.dart';
+import 'package:melasense/view/learn/education_hub_screen.dart';
+import 'package:melasense/view/settings/settings.dart';
 import 'package:melasense/view/test/test_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BottomNav extends StatefulWidget {
+  final int initialIndex;
+  const BottomNav({super.key, this.initialIndex = 0});
+
   @override
-  _BottomNavState createState() => _BottomNavState();
+  State<BottomNav> createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
-  // Yahan apni 4 screens banao
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex;
+  }
+
   final List<Widget> _pages = [
     PatientDashboard(),
     NewTestScreen(),
-    LearnScreen(),
+    EducationHubScreen(),
     SettingsScreen(),
   ];
 
@@ -48,9 +59,7 @@ class _BottomNavState extends State<BottomNav> {
                 hoverColor: Colors.transparent,
 
                 onTap: () {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text("Mic button tapped")));
+                  Navigator.pushNamed(context, RouteNames.chatBot);
                 },
                 child: Container(
                   height: 16.h,
@@ -94,7 +103,7 @@ class _BottomNavState extends State<BottomNav> {
         children: [
           Icon(
             icon,
-            color: isSelected ? Colors.blue : Colors.black54,
+            color: isSelected ? AppColor.primaryColor : Colors.black54,
             size: 20.sp,
           ),
           SizedBox(height: 1.h),
@@ -102,25 +111,11 @@ class _BottomNavState extends State<BottomNav> {
             label,
             style: GoogleFonts.poppins(
               fontSize: 14.sp,
-              color: isSelected ? Colors.blue : Colors.black54,
+              color: isSelected ? AppColor.primaryColor : Colors.black54,
             ),
           ),
         ],
       ),
     );
-  }
-}
-
-class LearnScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("📖 Learn Screen"));
-  }
-}
-
-class SettingsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("⚙️ Settings Screen"));
   }
 }
